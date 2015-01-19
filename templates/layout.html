@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />	
+	<title>Project Elsa</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- stylesheets -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/compiled/theme.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/vendor/animate.css') }}">
+
+	<!-- javascript -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="{{ url_for('static', filename='js/bootstrap/bootstrap.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body id="home4">
+	
+	<header class="navbar navbar-inverse normal " role="banner">
+  		<div class="container">
+    		<div class="navbar-header">
+		      	<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+		      	</button>
+      			<a href="{{ url_for('home') }}" class="navbar-brand">Project Elsa</a>
+    		</div>
+    		<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      			<ul class="nav navbar-nav navbar-right">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+						{% if role %}
+                            {% if role.role == 'admin' %}
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <i class="fa fa-angle-down"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="{{ url_for('manage_users') }}">Manage Users</a></li>
+                                        <li><a href="#">Configure Features</a></li>
+                                        <li><a href="{{ url_for('manage_content') }}">Manage Content</a></li>
+
+                                    </ul>
+                                </li>
+                            {% else %}
+                            {% endif %}
+
+                        {% else %}
+                        {% endif %}
+
+
+                        {% if logged_in %}
+                            <li><a href="{{ url_for('messages') }}">Messages</a></li>
+                            <li><a href="{{ url_for('logout')}}">Logout</a></li>
+                        {% else %}
+                        {% endif %}
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </nav><!--/nav-->
+    </header><!--/header-->
+                       
+						</ul>
+					</nav>
+				</div><!-- row-content -->	
+		</header>
+
+				{% for message in get_flashed_messages() %}
+							<div class="bs-example" style="margin-top: 50px;">
+							<div class="alert alert-block alert-info fade in">
+							  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							  <h4>{{ message }}</h4>
+							</div>
+							</div><!-- /example -->
+				 {% endfor %}
+				 
+	<div id="second-option">
+		<div class="container">
+			<div class="row">
+				 {% block body %} {% endblock %}
+				</section>
+			</div>				
+		</div>
+      </div>
+
+       
+   
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 copyright">
+					React LLC 2014
+				</div>
+				<div class="col-md-6 menu">
+					<ul>
+	      				<li>
+	          				<a href="features.html">Features</a>
+	        			</li>
+	        			<li>
+	        				<a href="services.html">Services</a>
+	        			</li>
+	        			<li>
+	          				<a href="pricing.html">Pricing</a>
+	        			</li>
+	        			<li>
+	          				<a href="support.html">Support</a>
+	        			</li>
+	        			<li>
+	          				<a href="blog.html">Blog</a>
+	        			</li>
+	      			</ul>
+				</div>
+				<div class="col-md-3 social">
+					<a href="#">
+						<img src="{{ url_for('static', filename='images/social/social-tw.png') }}" alt="twitter" />
+					</a>
+					<a href="#">
+						<img src="{{ url_for('static', filename='images/social/social-dbl.png') }}" alt="dribbble" />
+					</a>					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="demo">
+	  	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-body">
+	      			<iframe src='http://player.vimeo.com/video/22439234' width='650' height='370' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	      		</div>
+	    	</div>
+	 	 </div>
+	</div>
+
+	<script type="text/javascript">
+		$(function () {
+			var $demo = $("#demo");
+			$('#demo').on('hidden.bs.modal', function () {
+			  $demo.find("iframe").remove();
+			})
+			$('#demo').on('show.bs.modal', function () {
+				if (!$demo.find("iframe").length) {
+					$demo.find(".modal-body").append("<iframe src='http://player.vimeo.com/video/22439234' width='650' height='370' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>")
+				}			  
+			})
+		});
+	</script>
+
+</body>
+</html>

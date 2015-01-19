@@ -1,0 +1,5 @@
+.idea/
+migrations/
+*.pyc
+candidate_index/
+jobs_index/
