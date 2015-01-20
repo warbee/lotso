@@ -40,3 +40,16 @@ class Bag(db.Model):
 
     def __repr__(self):
         return '<id %r>' % self.id
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    gold_marbles = db.Column(db.Integer)
+    created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    modified = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    title = db.Column(db.String(255))
+    desc = db.Column(db.String(4000))
+    link = db.Column(db.String(1000))
+
+    def __repr__(self):
+        return '<id %r>' % self.id
