@@ -35,3 +35,9 @@ class RegistrationForm(form.Form):
             return validators.ValidationError('Duplicate username')
         else:
             return True
+
+class PostForm(form.Form):
+    user_id = fields.IntegerField()
+    title = fields.StringField()
+    desc = fields.StringField()
+    link = fields.StringField()
