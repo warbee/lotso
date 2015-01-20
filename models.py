@@ -30,3 +30,13 @@ class User(db.Model):
 
     def __repr__(self):
         return '<id %r>' % self.id
+
+class Bag(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), unique=True)
+    gold_marbles = db.Column(db.Integer)
+    created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    modified = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+
+    def __repr__(self):
+        return '<id %r>' % self.id
