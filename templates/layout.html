@@ -7,6 +7,7 @@
 		<meta name="description" content="The Page Description">
 		<style type="text/css">@-ms-viewport{width: device-width;}</style>
 		<title>Beetle - Home page</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/layers.min.css') }}" media="screen">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" media="screen"> 
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" media="screen">
@@ -22,7 +23,7 @@
 	</head>
 
 	<body class="page">
-		
+
 		<header role="banner" class="transparent light">
 			<div class="row">
 				<div class="nav-inner row-content buffer-left buffer-right even clear-after">
@@ -84,6 +85,15 @@
 			</div><!-- row -->	
 		</header>
 
+				{% for message in get_flashed_messages() %}
+							<div class="bs-example" style="margin-top: 50px;">
+							<div class="alert alert-block alert-info fade in">
+							  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+							  <h4>{{ message }}</h4>
+							</div>
+							</div><!-- /example -->
+				 {% endfor %}
+
 		<main role="main">
 
 			{% block body %} {% endblock %}
@@ -139,7 +149,7 @@
 		<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>		
 		<script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
 		<script src="{{ url_for('static', filename='js/beetle.js') }}"></script>
-
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	</body>
 
 </html>

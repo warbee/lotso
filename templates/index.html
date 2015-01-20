@@ -60,7 +60,7 @@
 									<li><a href="single-blog-post-sidebar.html">Single Post with Sidebar</a></li>
 								</ul>
 							</li>
-							<li class="menu-item"><a href="resume.html">Resume</a></li>
+							<li class="menu-item"><a href="{{ url_for('signup') }}">Sign Up</a></li>
 							<li class="menu-item">
 								<a href="#">Features</a>
 								<ul class="sub-menu">
@@ -91,7 +91,7 @@
 						<div class="caption">
 							<h2>Beetle</h2>
 							<p>HTML5 template for landing page, blog and resume</p>
-							<a class="button white transparent" href="#">Read More</a>
+							<a class="button white transparent" href="{{ url_for('signin') }}">Sign In</a>
 						</div><!-- caption -->
 						<div class="photocaption">
 							<h4>Shot by <a href="http://dribbble.com/JustinMezzell">Justin Mezzell</a></h4>
@@ -445,6 +445,7 @@
 		<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>		
 		<script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
 		<script src="{{ url_for('static', filename='js/beetle.js') }}"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 	</body>
 

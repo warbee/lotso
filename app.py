@@ -60,8 +60,11 @@ def base36decode(number):
 
 @app.route('/')
 def index():
-    return render_template('layout.html')
+    return render_template('index.html')
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
 @app.route('/signin')
 def signin():

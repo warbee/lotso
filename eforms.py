@@ -29,8 +29,6 @@ class RegistrationForm(form.Form):
     name = fields.TextField(validators=[validators.required()])
     email = fields.TextField(validators=[validators.required()])
     password = fields.PasswordField(validators=[validators.required()])
-    tagline = fields.TextField(validators=[validators.required()])
-    summary = fields.TextField(validators=[validators.required()])
 
     def validate_login(self, field):
         if db.session.query(models.User).filter_by(email=self.email.data).count() > 0:
