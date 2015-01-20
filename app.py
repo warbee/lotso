@@ -101,6 +101,7 @@ def register():
     form = eforms.RegistrationForm(request.form)
     if helpers.validate_form_on_submit(form):
         user = models.User()
+        bag = models.Bag()
 
         if form.validate_login(user):
             form.populate_obj(user)
@@ -113,6 +114,16 @@ def register():
 
                 login.login_user(user)
                 msg = 'User saved'
+                bag.user_id = user.id
+                bag.gold_marbles = 3
+
+                try:
+                    db.session.add(bag)
+                    db.session.commit()
+                    msg += ' marbles added!'
+                except:
+                    db.session.rollback()
+                    msg += ' failed saving marbles...'
 
                 flash(msg)
                 return redirect(url_for('home'))
