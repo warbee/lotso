@@ -64,7 +64,9 @@ def index():
 
 @app.route('/home')
 def home():
-    return render_template('home.html', logged_in=login.current_user.is_authenticated())
+    marbles = db.session.query(models.Bag).filter_by(user_id=login.current_user.id).first()
+    return render_template('home.html', logged_in=login.current_user.is_authenticated()
+                                        ,marbles=marbles.gold_marbles)
 
 @app.route('/signin')
 def signin():
