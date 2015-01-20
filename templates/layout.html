@@ -78,6 +78,10 @@
 									</li>
 								</ul>								
 							</li>
+							{% if logged_in %}
+	                            <li><a href="{{ url_for('logout')}}">Logout</a></li>
+	                        {% else %}
+	                        {% endif %}
 							<li class="menu-item"><a href="contact.html">Contact</a></li>
 						</ul>
 					</nav>

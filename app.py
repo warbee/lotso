@@ -64,7 +64,7 @@ def index():
 
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    return render_template('home.html', logged_in=login.current_user.is_authenticated())
 
 @app.route('/signin')
 def signin():
