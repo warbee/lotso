@@ -16,7 +16,7 @@ SQLAlchemy==0.9.4
 Twisted-Core==13.2.0
 Twisted-Web==13.2.0
 WTForms==2.0.1
-Werkzeug==0.8.3
+Werkzeug==0.15.3
 Whoosh==2.6.0
 adium-theme-ubuntu==0.3.4
 alembic==0.6.5
